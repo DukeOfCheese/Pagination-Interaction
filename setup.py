@@ -9,7 +9,7 @@ setup(
     description="Easily create pagination for your embeds with interaction.",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    py_modules=["pagination_interaction"],
+    py_modules=["paginationint"],
     package_dir={'': "src"},
     url="https://github.com/DukeOfCheese/Pagination-Interaction",
     author="soosBot and DukeOfCheese",

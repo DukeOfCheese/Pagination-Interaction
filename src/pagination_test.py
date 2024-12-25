@@ -1,6 +1,6 @@
 import discord
 import pytest
-import pagination_interaction
+import paginationint
 
 @pytest.fixture
 def mock_context():
@@ -20,4 +20,4 @@ def sample_pages():
 
 @pytest.mark.asyncio
 async def test_paginator_start(mock_context, sample_pages):
-    await pagination_interaction.Simple().start(mock_context, sample_pages)
+    await paginationint.Simple().start(mock_context, sample_pages)
