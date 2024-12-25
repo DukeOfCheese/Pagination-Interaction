@@ -39,7 +39,7 @@ class Simple(discord.ui.View):
         self.ephemeral = ephemeral
         
         self.pages = None
-        self.ctx = None
+        self.interaction = None
         self.message = None
         self.current_page = None
         self.page_counter = None
@@ -47,14 +47,14 @@ class Simple(discord.ui.View):
 
         super().__init__(timeout=timeout)
 
-    async def start(self, ctx: discord.Interaction|commands.Context, pages: list[discord.Embed]):
+    async def start(self, interaction: discord.Interaction|commands.Context, pages: list[discord.Embed]):
         
-        if isinstance(ctx, discord.Interaction):
-            ctx = await commands.Context.from_interaction(ctx)
+        if isinstance(interaction, discord.Interaction):
+            interaction = await commands.Context.from_interaction(interaction)
 
         self.pages = pages
         self.total_page_count = len(pages)
-        self.ctx = ctx
+        self.interaction = interaction
         self.current_page = self.InitialPage
 
         self.PreviousButton.callback = self.previous_button_callback
@@ -68,7 +68,7 @@ class Simple(discord.ui.View):
         self.add_item(self.page_counter)
         self.add_item(self.NextButton)
 
-        self.message = await ctx.send(embed=self.pages[self.InitialPage], view=self, ephemeral=self.ephemeral)
+        self.message = await interaction.send(embed=self.pages[self.InitialPage], view=self, ephemeral=self.ephemeral)
 
     async def previous(self):
         if self.current_page == 0:
@@ -89,7 +89,7 @@ class Simple(discord.ui.View):
         await self.message.edit(embed=self.pages[self.current_page], view=self)
 
     async def next_button_callback(self, interaction: discord.Interaction):
-        if interaction.user != self.ctx.author and self.AllowExtInput:
+        if interaction.user != self.interaction.author and self.AllowExtInput:
             embed = discord.Embed(description="You cannot control this pagination because you did not execute it.",
                                   color=discord.Colour.red())
             return await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -97,7 +97,7 @@ class Simple(discord.ui.View):
         await interaction.response.defer()
 
     async def previous_button_callback(self, interaction: discord.Interaction):
-        if interaction.user != self.ctx.author and self.AllowExtInput:
+        if interaction.user != self.interaction.author and self.AllowExtInput:
             embed = discord.Embed(description="You cannot control this pagination because you did not execute it.",
                                   color=discord.Colour.red())
             return await interaction.response.send_message(embed=embed, ephemeral=True)
