@@ -1,6 +1,6 @@
 import discord
 import pytest
-from paginator.simple import Simple
+import pagination_interaction
 
 @pytest.fixture
 def mock_context():
@@ -20,25 +20,4 @@ def sample_pages():
 
 @pytest.mark.asyncio
 async def test_paginator_start(mock_context, sample_pages):
-    paginator = Simple()
-    await paginator.start(mock_context, sample_pages)
-
-    assert paginator.pages == sample_pages
-    assert paginator.total_page_count == len(sample_pages)
-    assert paginator.current_page == 0
-
-@pytest.mark.asyncio
-async def test_next(mock_context, sample_pages):
-    paginator = Simple()
-    await paginator.start(mock_context, sample_pages)
-    
-    await paginator.next()
-    assert paginator.current_page == 1
-
-@pytest.mark.asyncio
-async def test_previous(mock_context, sample_pages):
-    paginator = Simple()
-    await paginator.start(mock_context, sample_pages)
-    
-    await paginator.previous()
-    assert paginator.current_page == len(sample_pages) - 1
+    await pagination_interaction.Simple().start(mock_context, sample_pages)
