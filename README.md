@@ -1,8 +1,6 @@
-# discord.py-pagination
+# discord.py-interaction-pagination
 
-#### discord.py-pagination is a Python library to easily create embed paginators.
-
-<img src="https://cdn.soosbot.com/images/pagination-requirement.svg" alt="WARNING IMAGE NOT FOUND">
+#### discord.py-interaction-pagination is a Python library to easily create embed paginators which uses interaction instead of ctx.
 
 ## Installation
 
