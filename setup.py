@@ -4,16 +4,16 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(
-    name="discord.py-pagination",
-    version="0.0.5",
-    description="Easily create pagination for your embeds.",
+    name="discord.py-interaction-pagination",
+    version="0.0.6",
+    description="Easily create pagination for your embeds with interaction.",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    py_modules=["Paginator"],
+    py_modules=["pagination-interaction"],
     package_dir={'': "src"},
-    url="https://github.com/soosBot-com/Pagination",
-    author="soosBot",
-    author_email="support@soosbot.com",
+    url="https://github.com/DukeOfCheese/Pagination-Interaction",
+    author="soosBot and DukeOfCheese",
+    author_email="dukeofcheesebusiness@gmail.com",
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Intended Audience :: Developers',
