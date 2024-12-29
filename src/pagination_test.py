@@ -1,6 +1,6 @@
 import discord
 import pytest
-import paginationint
+from Pagination import Pagination
 
 @pytest.fixture
 def mock_context():
