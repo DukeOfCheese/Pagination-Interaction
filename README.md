@@ -7,7 +7,7 @@
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the library.
 
 ```bash
-pip install discord.py-pagination
+pip install discord.py-pagination (pending)
 ```
 
 ## Usage
